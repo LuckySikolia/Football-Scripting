@@ -26,7 +26,7 @@ public class SpawnManagerX : MonoBehaviour
         {
             SpawnEnemyWave(waveCount);
         }
-        Debug.Log("Respawn hen enemy count = 0");
+        //Debug.Log("Respawn hen enemy count = 0");
     }
 
     // Generate random spawn position for powerups and enemy balls
