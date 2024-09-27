@@ -20,27 +20,9 @@ public class EnemyX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //try
-        //{
-        //    Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
-        //    //enemyRb.AddForce(lookDirection * speed * Time.deltaTime);
-        //    enemyRb.AddForce(lookDirection * speed);
-        //    Debug.Log("initiate enemy movement");
-        //}
-        //catch (NullReferenceException ex)
-        //{
-        //    Debug.LogError($"Object reference issue: {ex.Message}");
-        //}
-
         // Set enemy direction towards player goal and move there
         Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
         enemyRb.AddForce(lookDirection * speed);
-       
-
-
-
-
     }
 
     private void OnCollisionEnter(Collision other)

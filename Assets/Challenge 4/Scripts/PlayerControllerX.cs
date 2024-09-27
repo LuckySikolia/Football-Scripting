@@ -7,11 +7,10 @@ public class PlayerControllerX : MonoBehaviour
 {
     private Rigidbody playerRb;
     private float speed = 600;
-    private float boostSpeed = 800;
+    private float boostSpeed = 700;
     private GameObject focalPoint;
 
 
-    //public ParticleSystem smokeParticle;
     public GameObject smokeParticlePrefab;
 
     public bool hasPowerup;
@@ -27,7 +26,7 @@ public class PlayerControllerX : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point"); 
-        //smokeParticle = GetComponent<ParticleSystem>();
+      
     }
 
     void Update()
@@ -97,13 +96,14 @@ public class PlayerControllerX : MonoBehaviour
             Debug.Log("Space bar key was pressed");
             if(smokeParticlePrefab != null)
             {
-               GameObject smokeInstance = Instantiate(smokeParticlePrefab, transform.position, Quaternion.identity);
+               GameObject smokeInstance = Instantiate(smokeParticlePrefab, transform.position, focalPoint.transform.rotation);
                 ParticleSystem particleSystem = smokeInstance.GetComponent<ParticleSystem>();
                 if(particleSystem != null)
                 {
                     particleSystem.Play();
+                    Destroy(smokeInstance, particleSystem.main.duration);
                 }
-                Destroy(smokeInstance, particleSystem.main.duration);
+                
                 //smokeParticle.transform.position = transform.position + focalPoint.transform.position;
                 //smokeParticlePrefab.Play();
                 //playerRb.AddForce(focalPoint.transform.forward * boostSpeed * Time.deltaTime, ForceMode.Impulse);
